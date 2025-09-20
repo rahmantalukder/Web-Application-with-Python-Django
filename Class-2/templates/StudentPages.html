@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Page</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f6f9;
+      padding: 20px;
+      text-align: center; /* centers headings and inline-block elements */
+    }
+
+    /* Navbar */
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #333333;
+    }
+    ul li {
+      float: left;
+    }
+    ul li a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+    ul li a:hover {
+      background-color: #111111;
+    }
+
+    /* Form */
+    form {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 400px;
+      margin: 20px auto; /* center horizontally */
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      text-align: left; /* labels + inputs aligned */
+    }
+    label {
+      display: block;
+      margin: 10px 0 5px;
+      font-weight: bold;
+    }
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      background: #4CAF50;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #45a049;
+    }
+
+    /* Table */
+    table {
+      border-collapse: collapse;
+      width: 80%;
+      margin: 30px auto; /* center table */
+      background: white;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 10px;
+    }
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+
+  {% include "navbar.html" %}
+
+  {% block body %}
+  <h2>Student Information Form</h2><form action="#" method="post">
+  <form action="" method="POST">
+    {% csrf_token %}
+    
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="department">Department</label>
+    <input type="text" id="department" name="department" required>
+
+    <label for="city">City</label>
+    <input type="text" id="city" name="city" required>
+
+    <label for="email">E-mail</label>-0
+    <input type="email" id="email" name="email" required>
+
+    <label for="contact">Contact</label>
+    <input type="text" id="contact" name="contact" placeholder="e.g. 0123456789" required>
+
+    <button type="submit">Submit</button>
+</form>
+
+  </form>
+
+  <h2>Student Table</h2>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Department</th>
+      <th>City</th>
+      <th>E-mail</th>
+      <th>Contact</th>
+    </tr>
+    {% for i in student %}
+    <tr>
+      <td>{{ i.name }}</td>
+      <td>{{ i.department }}</td>
+      <td>{{ i.city }}</td>
+      <td>{{ i.email }}</td>
+      <td>{{ i.contact }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+
+  {% endblock %}
+
+</body>
+</html>
