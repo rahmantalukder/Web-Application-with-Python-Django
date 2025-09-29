@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block body%}
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2;}
+
+tr:hover {background-color: #ddd;}
+
+th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+</style>
+</head>
+<body>
+
+<h1>A Fancy Table</h1>
+
+<table>
+  <tr>
+    <th>Product Name</th>
+    <th>Category</th>
+    <th>Unit Price</th>
+    <th>Quantity</th>
+    <th>Discount (%)</th>
+    <th>Tax (%)</th>
+    <th>Tota Pprice</th>
+    <th>Sale Data</th>
+  </tr>
+  {% for i in product %}
+  <tr>
+    <td>{{i.product_name}}</td>
+    <td>{{i.category}}</td>
+    <td>{{i.unit_price}}</td>
+    <td>{{i.quantity}}</td>
+    <td>{{i.discount_percent}}</td>
+    <td>{{i.tax_percent}}</td>
+    <td>{{i.total_price}}</td>
+    <td>{{i.sale_date}}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+</body>
+</html>
+
+{% endblock body %}

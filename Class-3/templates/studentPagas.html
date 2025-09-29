@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: #f4f6f9;
+}
+
+/* Table styles */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 40px; /* space before form */
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* Center form at bottom */
+.form-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+form {
+  background: #fff;
+  padding: 20px 30px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+  width: 300px;
+}
+
+form label {
+  font-weight: bold;
+}
+
+form input {
+  width: 100%;
+  padding: 8px;
+  margin: 8px 0 16px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+form button {
+  width: 100%;
+  background: #007BFF;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+form button:hover {
+  background: #0056b3;
+}
+</style>
+</head>
+<body>
+<!-- Form Bottom Center -->
+<div class="form-container">
+  <form method="POST">
+    {% csrf_token %}
+
+    <label for="name">Name</label>
+    <input type="text" name="name" required>
+    <label for="contact">Department</label>
+    <input type="text" name="department" required>
+
+    <label for="age">Age</label>
+    <input type="number" name="age" required>
+
+    <label for="email">Email</label>
+    <input type="email" name="email" required>
+
+    <label for="contact">Contact</label>
+    <input type="text" name="contact" required>
+
+    <button type="submit">Add Student</button>
+
+    <div>
+    <br>
+      <label for="department">Department</label>
+
+      <select name="department" >
+        <option value="">-- Select Department --</option>
+        {% for i in departments %}
+        <option value="{{i}}">{{i}}</option>
+        {% endfor %}
+      </select>
+
+    </div>
+  </form>
+</div>
+
+<h2>Students Table</h2>
+
+<!-- Table Top -->
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Department</th>
+    <th>Age</th>
+    <th>Email</th>
+    <th>Contact</th>
+  </tr>
+  {% for i in student %}
+    <tr>
+      <td>{{i.name}}</td>
+      <td>{{i.department}}</td>
+      <td>{{i.age}}</td>
+      <td>{{i.email}}</td>
+      <td>{{i.contact}}</td>
+    </tr>
+  {% endfor %}
+</table>
+
+
+</body>
+</html>

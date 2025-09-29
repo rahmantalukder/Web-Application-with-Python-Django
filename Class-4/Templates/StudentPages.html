@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Pages</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f9;
+      margin: 0;
+      padding: 20px;
+      text-align: center; /* সবকিছু center align */
+    }
+
+    h2 {
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    form {
+      background: #fff;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      margin: 20px auto;
+      width: 50%; /* ✅ ফর্ম 50% */
+      text-align: left; /* form-এর ভিতরে টেক্সট বামে */
+    }
+
+    form input, form select, form button {
+      padding: 8px;
+      margin: 5px 0;
+      width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    form button {
+      background: #007bff;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    form button:hover {
+      background: #0056b3;
+    }
+
+    table {
+      width: 80%; /* ✅ টেবিল 80% */
+      border-collapse: collapse;
+      background: #fff;
+      margin: 20px auto;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: left;
+    }
+
+    th {
+      background: #007bff;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background: #f9f9f9;
+    }
+    body {
+  margin: 0;
+  padding: 0;
+}
+
+h2, p {
+  margin: 10px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333333;
+}
+
+ul li {
+  float: left;
+}
+
+ul li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+ul li a:hover {
+  background-color: #111111;
+}
+  </style>
+</head>
+<body>
+{% include "navbar.html"%}
+  <h2>Add New Student form </h2>
+  <form method="POST">
+    {% csrf_token %}
+    <lebel fro="">Student Name:</lebel>
+    <input type="text" name="name" required>
+    <lebel fro="">Roll Number:</lebel>
+    <input type="text" name="roll" required>
+    <lebel fro="">Department:</lebel>
+    <input type="text" name="Department"  required>
+    <lebel fro="">Admission Data:</lebel>
+    <input type="date" name="Admission" required>
+    <button type="submit">Add Student</button>
+  </form>
+
+  <h2>Filter by Department</h2>
+  <form method="GET">
+    <select name="department" ">
+      <option value="">-- All Departments --</option>
+      <option value="">-- All Departments --</option>
+      {% for dept in department %}
+        <option value="{{ dept }}">{{ dept }}</option>
+      {% endfor %}
+
+    </select>
+    <button type="submit">Add Student</button>
+  </form>
+
+  <h2>Student List</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Roll</th>
+        <th>Department</th>
+        <th>Admission Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for s in student %}
+      <tr>
+        <td>{{ s.name }}</td>
+        <td>{{ s.roll }}</td>
+        <td>{{ s.department }}</td>
+        <td>{{ s.Admission }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+</body>
+</html>
