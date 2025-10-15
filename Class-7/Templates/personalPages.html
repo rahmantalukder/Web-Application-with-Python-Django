@@ -1,0 +1,109 @@
+{% extends "master/base.html" %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <title>Employee Details</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #4b6cb7, #182848);
+      margin: 0;
+      padding: 40px;
+      color: #fff;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    h2 {
+      text-align: center;
+      color: #fff;
+      margin-bottom: 25px;
+      font-size: 28px;
+      letter-spacing: 1px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: rgba(255, 255, 255, 0.15);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 14px 20px;
+      text-align: left;
+    }
+
+    th {
+      background-color: rgba(255, 255, 255, 0.25);
+      color: #fff;
+      font-size: 16px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    tr:nth-child(even) {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    tr:hover {
+      background-color: rgba(255, 255, 255, 0.25);
+      transition: 0.3s;
+    }
+
+    td {
+      color: #e0e0e0;
+      font-size: 15px;
+    }
+
+    .salary {
+      font-weight: bold;
+      color: #ffd700;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Employee Information</h2>
+    <table>
+      <thead>
+        <tr>
+
+          <th>SL</th>
+          <th>Designation</th>
+          <th>Dept Data</th>
+          <th>Department</th>
+          <th>Salary</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for i in employee%}
+        <tr>
+            <th>{{forloop.counter}}</th>
+          <td>{{i.name}}</td>
+          <td>{{i.dept}}</td>
+          <td>{{i.designation}}</td>
+          <td class="salary">{{"$"}}{{i.salary}}</td>
+        </tr>
+     {% endfor%}
+
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>
+
+{% endblock content %}
